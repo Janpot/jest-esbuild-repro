@@ -1,5 +1,6 @@
-const esbuild = require("esbuild");
+const util = require("util");
 
 test("repro", async () => {
-  await esbuild.transform(`console.log('hello world')`);
+  const encoder = new util.TextEncoder();
+  expect(encoder.encode("€")).toBeInstanceOf(Uint8Array);
 });
